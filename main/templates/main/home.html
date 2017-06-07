@@ -1,0 +1,217 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="col-sm-4">
+			<h3>LIVE FEEDS</h3>
+			
+			
+				<ul class="nav nav-pills">
+				  	<li class="active"><a href="#npr-feed-conainer" data-toggle="tab">NPR</a></li>
+				  	<li><a href="#ny-times-feed-conainer" data-toggle="tab">NY Times</a></li>
+				  	<li><a href="#csm-feed-conainer" data-toggle="tab">CSM</a></li>
+				</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade active in feed-container" id="npr-feed-conainer">
+					<div class="well well-sm">
+						<h4><a href="http://www.npr.org/" target="_blank">National Public Radio</a></h4>
+						<div class="list-group feed" id="npr-feed"></div>
+					</div>
+				</div>
+				<div class="tab-pane fade feed-container" id="ny-times-feed-conainer">
+					<div class="well well-sm">
+						<span class="label label-info float-right" style="margin-top:14px;">liberal</span>
+						<h4><a href="https://www.nytimes.com/" target="_blank">The New York Times</a></h4>
+						<div class="list-group feed" id="ny-times-feed"></div>
+					</div>
+				</div>
+				<div class="tab-pane fade feed-container" id="csm-feed-conainer">
+					<div class="well well-sm">
+						<h4><a href="http://www.csmonitor.com/" target="_blank">Christian Science Monitor</a></h4>
+						<div class="list-group feed" id="csm-feed"></div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<div class="col-sm-4">
+			<h3>MAGAZINES</h3>
+			<div class="list-group">
+				<a href="http://www.economist.com/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">The Economist (UK)</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="https://newrepublic.com/" class="list-group-item" target="_blank">
+  					<span class="label label-info float-right">liberal</span>
+    				<h4 class="list-group-item-heading">New Republic</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
+  				<a href="http://www.nationalreview.com/" class="list-group-item" target="_blank">
+  					<span class="label label-danger float-right">conservative</span>
+    				<h4 class="list-group-item-heading">National Review</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
+  				<a href="https://theconversation.com/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">The Conversation</h4>
+    				<p class="list-group-item-text">
+    					articles directly from the academic and research community
+    				</p>
+  				</a>
+  				
+			</div>
+			<h3>POLICY INSTITUTES</h3>
+			<div class="list-group">
+				<a href="https://www.cato.org/" class="list-group-item" target="_blank">
+  					<span class="label label-success float-right">libertarian</span>
+    				<h4 class="list-group-item-heading">Cato Institute</h4>
+    				<p class="list-group-item-text">
+    					individual liberty, limited government, free markets, and peace
+    				</p>
+  				</a>
+  				<a href="http://www.aei.org/" class="list-group-item" target="_blank">
+  					<span class="label label-danger float-right">conservative</span>
+    				<h4 class="list-group-item-heading">American Enterprise Institute</h4>
+    				<p class="list-group-item-text">
+    					human dignity & human potential, building a freer and safer world
+    				</p>
+  				</a>
+  				<a href="https://www.brookings.edu/" class="list-group-item" target="_blank">
+  					<span class="label label-info float-right">liberal</span>
+    				<h4 class="list-group-item-heading">The Brookings Institution</h4>
+    				<p class="list-group-item-text">
+    					economic and social welfare, cooperative international system
+    				</p>
+  				</a>
+  				<a href="http://www.heritage.org/" class="list-group-item" target="_blank">
+  					<span class="label label-danger float-right">conservative</span>
+    				<h4 class="list-group-item-heading">The Heritage Foundation</h4>
+    				<p class="list-group-item-text">
+    					economic freedom, the rule of law, and a robust system of security alliances
+    				</p>
+  				</a>
+  			</div>
+  			
+		</div>
+		
+		<div class="col-sm-4">
+			<h3>DATA & POLLING</h3>
+			<div class="list-group">
+  				<a href="https://fivethirtyeight.com/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">FiveThirtyEight</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="https://flowingdata.com/category/visualization/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">FlowingData</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="http://www.pewresearch.org/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">Pew Research</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="http://www.gallup.com/home.aspx" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">Gallup</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+			</div>
+			<h3>VIDEO</h3>
+			<div class="list-group">
+				<a href="http://www.pbs.org/newshour/videos/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">PBS NewsHour</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="https://www.vox.com/videos" class="list-group-item" target="_blank">
+  					<span class="label label-info float-right">liberal</span>
+    				<h4 class="list-group-item-heading">Vox Video</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+			</div>
+			<h3>AUDIO</h3>
+			<div class="list-group">
+  				<a href="http://www.npr.org/sections/money/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">Planet Money</h4>
+    				<p class="list-group-item-text">
+    					NPR Economics Podcast
+    				</p>
+  				</a>
+  				<a href="http://freakonomics.com/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">Freakonomics</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="https://www.thisamericanlife.org/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">This American Life</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+			</div>
+			<!--  
+			<h3>PERSONAL</h3>
+			<div class="list-group">
+				<a href="http://www.worldpress.org/wprw.htm" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">WorldPress.org Global News Wire</h4>
+    				<p class="list-group-item-text">
+    					collects articles from news sources around the world
+    				</p>
+  				</a>
+  				<a href="https://www.nytimes.com/column/david-brooks" class="list-group-item" target="_blank">
+  					<span class="label label-danger float-right">conservative</span>
+    				<h4 class="list-group-item-heading">David Brooks</h4>
+    				<p class="list-group-item-text">
+    					liberals' favorite conservative
+    				</p>
+  				</a>
+  				<a href="http://www.cincinnati.com/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">Cincinnati Enquirer</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="https://www.wired.com/category/magazine/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">Wired Magazine</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
+  				<a href="http://www.latimes.com/" class="list-group-item" target="_blank">
+  					<span class="label label-info float-right">liberal</span>
+    				<h4 class="list-group-item-heading">LA Times</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
+  				<a href="http://www.slate.com/" class="list-group-item" target="_blank">
+  					<span class="label label-info float-right">liberal</span>
+    				<h4 class="list-group-item-heading">Slate</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
+  				<a href="https://www.theguardian.com/us" class="list-group-item" target="_blank">
+  					<span class="label label-info float-right">liberal</span>
+    				<h4 class="list-group-item-heading">The Guardian (UK)</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+  				<a href="https://www.city-journal.org/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">City Journal</h4>
+    				<p class="list-group-item-text">
+    				</p>
+  				</a>
+			</div>
+			-->
+		</div>
+	</div>
+
+{% endblock %}

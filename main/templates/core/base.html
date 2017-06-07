@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>News Buddy</title>
+	<meta name="description" content="John News" />
+	
+	<meta property="fb:app_id" content="1809210306063654"/>
+	
+	<meta property="og:site_name" content="News Buddy"/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://newsbuddy.news/" />
+	
+	<meta property="og:title" content="News Buddy"/>
+	<meta property="og:image" content="http://newsbuddy.news/img/newsbuddy.png"/>
+	<meta property="og:image:width" content="300" /> 
+	<meta property="og:image:height" content="300" />
+	<meta property="og:description" content="News Buddy is a news aggregator with a diverse range of perspectives and political ideologies. We maintain a concise list of sources, focusing on jornalism that avoids sensationalism and is intellectually honest, well-researched, and informative."/>
+	
+	<link rel="shortcut icon" type="image/png" href="/favicon.png?v=2" />
+
+	
+	<!-- Bootstrap compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Bootstrap Themes -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" rel="stylesheet" integrity="sha384-RpX8okQqCyUNG7PlOYNybyJXYTtGQH+7rIKiVvg1DLg6jahLEk47VvpUyS+E2/uJ" crossorigin="anonymous">
+    <!-- jQuery  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Bootstrap compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<style>
+		.float-right {
+			float:right;
+		}
+		
+		.feed {
+			height:50vh;
+			max-height:400px;
+			overflow:auto;
+		}
+		
+		.feed a.list-group-item {
+			background-color: #d9d9d9;
+			color: #272B30;
+			padding: 5px 15px;
+		}
+		
+		.feed a.list-group-item:hover {
+			background-color: #bfbfbf;
+		}
+		
+		
+	</style>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-99327129-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<script>
+	
+	convertMonth = function(monthNum) {
+		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		return months[monthNum];
+	};
+	
+	convertTime = function(hourNum, minNum) {
+		if (minNum <=9) {
+			minNum = '0' + minNum;
+		}
+		var result = ''
+		if (hourNum <= 12) {
+			result += hourNum + ':' + minNum + ' AM';
+		} else {
+			hourNum = hourNum - 12;
+			result += hourNum + ':' + minNum + ' PM';
+		}
+		return result;
+	}
+	
+	$(document).ready(function() {
+		$.get('/ajax/get_rss?source=npr', function (data) {
+			//data = $.parseXML(data);		//required for clean parsing
+            $(data).find('item').each(function() {
+            	var el = $(this);
+				var title = el.find("title").text();
+				var lnk = el.find("link").text();
+				var dt = new Date(el.find("pubDate").text());
+				var dtStr = convertMonth(dt.getMonth()) + ' ' + dt.getDate() + ', ' + convertTime(dt.getHours(), dt.getMinutes());		
+				var mystr = '<a class="list-group-item" href="' + lnk + '">' + '<div style="padding-bottom:2px;"><span class="label label-default">' + dtStr + '</span></div>'+ title + '</a>';
+				$('#npr-feed').append(mystr);
+            });
+		});
+		$.get('/ajax/get_rss?source=nytimes', function (data) {
+			//data = $.parseXML(data);
+            $(data).find('item').each(function() {
+            	var el = $(this);
+				var title = el.find("title").text();
+				var lnk = el.find("link").text();
+				var dt = new Date(el.find("pubDate").text());
+				var dtStr = convertMonth(dt.getMonth()) + ' ' + dt.getDate() + ', ' + convertTime(dt.getHours(), dt.getMinutes());		
+				var mystr = '<a class="list-group-item" href="' + lnk + '">' + '<div style="padding-bottom:2px;"><span class="label label-default">' + dtStr + '</span></div>'+ title + '</a>';
+				$('#ny-times-feed').append(mystr);
+            });
+		});
+		$.get('/ajax/get_rss?source=csm', function (data) {
+			//data = $.parseXML(data);
+            $(data).find('item').each(function() {
+            	var el = $(this);
+				var title = el.find("title").text();
+				var lnk = el.find("link").text();
+				var yearPos = lnk.indexOf("201");
+				var monthStr = lnk.substring(yearPos+5, yearPos+7);
+				var dayStr = lnk.substring(yearPos+7, yearPos+9);
+				var dtStr = convertMonth(parseInt(monthStr)-1) + ' ' + parseInt(dayStr);
+				//var dt = new Date(el.find("pubDate").text());
+				//var dtStr = convertMonth(dt.getMonth()) + ' ' + dt.getDate() + ', ' + convertTime(dt.getHours(), dt.getMinutes());		
+				var mystr = '<a class="list-group-item" href="' + lnk + '">' + '<div style="padding-bottom:2px;"><span class="label label-default">' + dtStr + '</span></div>'+ title + '</a>';
+				$('#csm-feed').append(mystr);
+            });
+		});
+	});
+	
+	</script>
+
+</head>
+
+<body>
+
+	{% include 'core/navbar.html' %}
+	
+	<div class="container-fluid" style="max-width:1500px;min-height:80vh;">
+		{% block content %}{% endblock %}
+	</div>
+	
+	{% include 'core/footer.html' %}
+
+</body>
+
+</html>
+
+

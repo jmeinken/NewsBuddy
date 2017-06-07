@@ -1,0 +1,8 @@
+*.pyc
+
+*.project
+*.settings
+
+*.sqlite3
+
+settings.py
