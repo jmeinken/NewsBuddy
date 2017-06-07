@@ -6,3 +6,4 @@
 *.sqlite3
 
 settings.py
+settings_production.py
