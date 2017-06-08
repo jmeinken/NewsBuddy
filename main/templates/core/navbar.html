@@ -20,6 +20,14 @@
 				<li {% if nav == 'about' %}class="active"{% endif %}>
 					<a href="{% url 'about' %}">About</a>
 				</li>
+				{% if user.is_active %}
+					<li>
+						<a href="{% url 'new_newsfeed' %}">Add Newsfeed</a>
+					</li>
+					<li>
+						<a href="{% url 'newsfeed' %}">Edit Newsfeed</a>
+					</li>
+				{% endif %}
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>

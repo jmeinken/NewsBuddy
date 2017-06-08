@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<h2>Edit News Feed</h2>
+		{% for oNF in qNewsFeed %}
+			<a class="list-group-item" href="{% url 'edit_newsfeed' oNF.id %}">
+				<div style="padding-bottom:2px;">
+					<span class="label label-default">
+						{{ oNF.publication }} | 
+						{{ oNF.article_date }}
+						{% if oNF.article_time %}
+							{{ oNF.article_time }}
+						{% endif %}
+					</span>
+				</div>
+				{{ oNF.title }}
+			</a>
+		{% endfor %}
+		
+	</div>
+</div>
+
+
+{% endblock %}

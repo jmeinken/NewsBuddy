@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 
 import urllib2
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 from . import forms
 from . import models
@@ -22,20 +23,38 @@ def about(request):
     context['nav'] = 'about'
     return render(request, 'main/about.html', context)
 
-# using django form instead for now
+@login_required
+def newsfeed(request):
+    context = {}
+    context['qNewsFeed'] = models.NewsFeed.objects.all()
+    return render(request, 'main/newsfeed.html', context)
 
-# @login_required
-# def new_newsfeed(request):
-#     context = {}
-#     if request.method == 'POST':
-#         form = forms.NewsFeedForm(request.POST)
-#         if form.is_valid():                            
-#             oPage = form.save()
-#             return HttpResponse('thanks')
-#     else:
-#         form = forms.NewsFeedForm()
-#     context['form'] = form
-#     return render(request, 'main/new_newsfeed.html', context)
+@login_required
+def new_newsfeed(request):
+    context = {}
+    if request.method == 'POST':
+        form = forms.NewsFeedForm(request.POST)
+        if form.is_valid():                            
+            oPage = form.save()
+            return redirect('home')
+    else:
+        form = forms.NewsFeedForm()
+    context['form'] = form
+    return render(request, 'main/new_newsfeed.html', context)
+
+@login_required
+def edit_newsfeed(request, newsfeed_id):
+    context = {}
+    oNewsFeed = get_object_or_404(models.NewsFeed, pk=newsfeed_id)
+    if request.method == 'POST':
+        form = forms.NewsFeedForm(request.POST, instance=oNewsFeed)
+        if form.is_valid():
+            oNewsFeed = form.save()
+            return redirect('home')
+    else:
+        form = forms.NewsFeedForm(instance=oNewsFeed)
+    context['form'] = form
+    return render(request, 'main/new_newsfeed.html', context)
 
 def ajax_get_rss(request):
     context = {}
