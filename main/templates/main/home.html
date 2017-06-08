@@ -11,6 +11,7 @@
 				  	<li class="active"><a href="#npr-feed-conainer" data-toggle="tab">NPR</a></li>
 				  	<li><a href="#ny-times-feed-conainer" data-toggle="tab">NY Times</a></li>
 				  	<li><a href="#csm-feed-conainer" data-toggle="tab">CSM</a></li>
+				  	<li><a href="#recommended-feed-conainer" data-toggle="tab">Recommended</a></li>
 				</ul>
 			<div class="tab-content">
 				<div class="tab-pane fade active in feed-container" id="npr-feed-conainer">
@@ -32,6 +33,27 @@
 						<div class="list-group feed" id="csm-feed"></div>
 					</div>
 				</div>
+				<div class="tab-pane fade feed-container" id="recommended-feed-conainer">
+					<div class="well well-sm">
+						<h4>News Buddy Recommended Articles</h4>
+						<div class="list-group feed" id="recommended-feed">
+							{% for oNF in qNewsFeed %}
+								<a class="list-group-item" href="{{oNF.url}}">
+									<div style="padding-bottom:2px;">
+										<span class="label label-default">
+											{{ oNF.publication }} | 
+											{{ oNF.article_date }}
+											{% if oNF.article_time %}
+												{{ oNF.article_time }}
+											{% endif %}
+										</span>
+									</div>
+									{{ oNF.title }}
+								</a>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
 			</div>
 			
 			
@@ -51,9 +73,22 @@
     					
     				</p>
   				</a>
+  				<a href="https://www.theatlantic.com/" class="list-group-item" target="_blank">
+    				<h4 class="list-group-item-heading">The Atlantic</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
   				<a href="http://www.nationalreview.com/" class="list-group-item" target="_blank">
   					<span class="label label-danger float-right">conservative</span>
     				<h4 class="list-group-item-heading">National Review</h4>
+    				<p class="list-group-item-text">
+    					
+    				</p>
+  				</a>
+  				<a href="http://dailysignal.com/" class="list-group-item" target="_blank">
+  					<span class="label label-danger float-right">conservative</span>
+    				<h4 class="list-group-item-heading">The Daily Signal</h4>
     				<p class="list-group-item-text">
     					
     				</p>
