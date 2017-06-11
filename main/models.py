@@ -16,9 +16,10 @@ class NewsFeed(models.Model):
     comment = models.TextField(blank=True, null=True)
     article_date = models.DateField(max_length=500, blank=True, null=True, default=datetime.date.today)
     article_time = models.TimeField(max_length=500, blank=True, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        ordering = ['-article_date', '-article_time']
+        ordering = ['-created_on', '-article_date', '-article_time']
     
     def __unicode__(self):
         return self.title
