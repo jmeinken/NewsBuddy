@@ -48,7 +48,13 @@
 											{% endif %}
 										</span>
 									</div>
+									{% if oNF.read_time %}
+										
+											({{  oNF.read_time }} min)
+										
+									{% endif %}
 									{{ oNF.title }}
+									
 								</a>
 							{% endfor %}
 						</div>

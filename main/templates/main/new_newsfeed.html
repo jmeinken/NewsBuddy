@@ -3,8 +3,15 @@
 
 {% block content %}
 
+
+
+
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
+		<div>
+			<a href="http://niram.org/read/" target="_blank">Calculate Read Time</a>
+		</div>
+		<hr>
 		<form method="post" id="myForm">
 			{% csrf_token %}
 			{{ form|crispy }}
