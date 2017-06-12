@@ -17,6 +17,7 @@ class NewsFeed(models.Model):
     article_date = models.DateField(max_length=500, blank=True, null=True, default=datetime.date.today)
     article_time = models.TimeField(max_length=500, blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField(default=True)
     
     class Meta:
         ordering = ['-created_on', '-article_date', '-article_time']

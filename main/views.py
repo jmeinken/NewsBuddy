@@ -14,7 +14,7 @@ from . import models
 
 def home(request):
     context = {}
-    context['qNewsFeed'] = models.NewsFeed.objects.all()[:30]
+    context['qNewsFeed'] = models.NewsFeed.objects.filter(published=True)[:30]
     context['nav'] = 'home'
     return render(request, 'main/home.html', context)
 
