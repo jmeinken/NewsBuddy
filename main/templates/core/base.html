@@ -147,6 +147,18 @@
 				$('#csm-feed').append(mystr);
             });
 		});
+		$.get('/ajax/get_rss?source=wired', function (data) {
+			//data = $.parseXML(data);
+            $(data).find('item').each(function() {
+            	var el = $(this);
+				var title = el.find("title").text();
+				var lnk = el.find("link").text();
+				var dt = new Date(el.find("pubDate").text());
+				var dtStr = convertMonth(dt.getMonth()) + ' ' + dt.getDate() + ', ' + convertTime(dt.getHours(), dt.getMinutes());		
+				var mystr = '<a class="list-group-item" href="' + lnk + '">' + '<div style="padding-bottom:2px;"><span class="label label-default">' + dtStr + '</span></div>'+ title + '</a>';
+				$('#wired-feed').append(mystr);
+            });
+		});
 	});
 	
 	</script>

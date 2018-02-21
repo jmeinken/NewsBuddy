@@ -65,6 +65,8 @@ def ajax_get_rss(request):
         url = 'http://www.npr.org/rss/rss.php?id=1001'
     elif source == 'nytimes':
         url = 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'
+    elif source == 'wired':
+        url = 'https://www.wired.com/feed/rss'
     else:  #CSM
         url = 'http://rss.csmonitor.com/feeds/csm?format=xml'
 
